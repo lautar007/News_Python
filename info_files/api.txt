@@ -1,0 +1,8 @@
+--> ¿Qué es una API y para qué sirve?
+Una API (Application Programming Interface, o Interfaz de Programación de Aplicaciones) es una pieza de código que permite a dos aplicaciones comunicarse entre sí para compartir información y funcionalidades. Se usan generalmente en bibliotecas de programación. 
+
+Por ejemplo: Si se tiene una app de recetas en un teléfono móvil y al operar esta app se hace una búsqueda, se puede utilizar una API para que esta aplicación se comunique con el sitio web de recetas, solicite las recetas que cumplen con los criterios de búsqueda, retorne resultados y porteriormente tras seleccionar el usuario la receta deseada, solicite y realice la descarga de la información relacionada a la misma. 
+
+De este modo, una API es un puente para conectar diferentes aplicaciones y hacer que trabajen de manera más eficiente y efectiva.
+
+Una API representa la capacidad de comunicación entre componentes de software. Se trata del conjunto de llamadas a ciertas bibliotecas que ofrecen acceso a ciertos servicios desde los procesos y representa un método para conseguir abstracción en la programación, generalmente (aunque no necesariamente) entre los niveles o capas inferiores y los superiores del software. Uno de los principales propósitos de una API consiste en proporcionar un conjunto de funciones de uso general, por ejemplo, para dibujar ventanas o iconos en la pantalla. De esta forma, los programadores se benefician de las ventajas de las API haciendo uso de su funcionalidad, evitándose el trabajo de programar todo desde el principio. Las API asimismo son abstractas: el software que proporciona una cierta API generalmente es llamado la implementación de esa API.

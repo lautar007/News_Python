@@ -1,0 +1,23 @@
+-->¿Qué es Ruff? 
+Ruff es principalmente un linter y formateador de código Python extremadamente rápido, escrito en el lenguaje Rust. 
+Está diseñado para mejorar la eficiencia en el desarrollo al detectar errores de estilo, corregir problemas comunes y formatear código mucho más rápido que otras herramientas tradicionales.
+
+Características y usos clave de Ruff:
+
+- Rendimiento: Al estar escrito en Rust, ofrece un rendimiento superior, ejecutándose en una fracción del tiempo que otras herramientas.
+- Linter de Python: Analiza el código para detectar errores potenciales, violaciones de estilo de programación y código no utilizado.
+- Formateador: Asegura un formato de código consistente.
+- Uso: Se utiliza ampliamente como extensión en editores como VS Code para mejorar el flujo de trabajo en Python.
+
+Es una extensión de VSC la cual fue utilizada en este proyecto para pulir el formato de código según el PEP8. Como las recomendaciones que da el PEP son demasiado extensas y es imposible recordarlas todas, este tipo de herramientas modifica el código escrito para cumplir con sus convenciones. 
+
+Una vez instalada la extensión, al hacer click derecho sobre un archivo o un código seleccionado, tendremos la opción de "formatear" ("Format Document") que utiliza esta herramienta para modificar el código de tal forma que cumpla con lo que propone el PEP8.
+
+También podemos formatear un archivo mediante Ruff a través de la terminal utilizando el comando: 
+
+    ruff format path/to/file.py
+
+Para más información también se puede ejecutar el comando:
+
+    ruff format --help
+

@@ -45,11 +45,12 @@ try:
     if not validate_api_key(API_KEY):
         #Si la función de validación nos indica que la clave de acceso es inválida (False), entonces utilizamos la palabra reservada "raise" para forzar un error de excepción, con el objetivo de que el except lo capture y muestre el fallo en consola.
         raise ValueError("API key inválida")
-
+        #"raise" detiene la ejecución, en caso de no ser capturada la excepción. Es muy útil cuando queremos configurar nuestros propios errores personalizados. 
     #Si la validación es correcta (True), entonces podremos intentar la conexión
     newsapi = NewsApiClient(API_KEY)
 
-except Exception as e:
+#Siempre es buena práctica utilizar en el except el nombre específico del error. Pero si quisiéramos que actúe frente a cualquier error en general, podríamos usar la palabara "Exception" que es la clase de la cual heredan todos los errores de Python (recomiendo investigar sobre Herencia y los demás pilares de la POO)
+except ValueError as e:
     print(f"Error al intentar conectar la API con la api-key: {e}")
 
 #====================================================================================

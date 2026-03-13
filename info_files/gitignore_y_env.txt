@@ -1,0 +1,43 @@
+No es el objetivo de este proyecto de ejemplo explicar el funcionamiento de herramientas de control de versionado. 
+En este caso estamos usando Git. 
+Lo que hace un controlador de versiones es, justamente, llevar un seguimiento de las modificaciones que se realizan en un proyecto. De esta forma se facilita la protección del código, se puede retroceder a una versión anterior más estable en caso de ocurrir algún error grave, y facilita la colaboración entre programadores para trabajar en un mismo proyecto. 
+Además, tiene la opción de conectar el proyecto con un repositorio en la nube, de tal forma que todos los cambios que se vayan haciendo a nivel código puedan subirse automáticamente y el proyecto esté actualizado y resguardado en internet. 
+
+Pero al trabajar con proyectos hay ciertas cosas que no convienen que estén subidas de manera pública en la nube, ya sea porque es innecesario o porque se trata de información sensible que no se debe divulgar. 
+Para eso, la herramienta Git cuenta con un método para diferenciar entre los archivos que debe publicar y los que debe ignorar. Para ello, el proyecto cuenta con un archivo ".gitignore"
+
+🚫 .gitignore
+El archivo .gitignore le indica a Git qué archivos o carpetas debe ignorar en un proyecto. Es como una lista de "cosas que no quiero que se suban al repositorio". Su función principal es:
+
+Evitar subir archivos innecesarios (como cachés, logs o dependencias)
+
+Proteger información sensible (contraseñas, claves de API)
+
+Mantener el repositorio limpio, solo con el código esencial
+
+Cualquier archivo listado aquí será completamente ignorado por Git.
+
+Por ejemplo, en nuestro caso los llamados a la API de noticias requieren una clave, llamada API_KEY que es personal para cada usuario registrado en el sistema de la API. Este dato es sensible y no debe aparecer en el código, por tanto se lo maneja como una variable de entorno. 
+
+¿Qué son las variables de entorno? 
+Estas son un conjunto de variables, escritas en un archivo ".env" dentro del directorio raíz del proyecto, donde se guardan datos relevantes para el funcionamiento del programa pero que no queremos que se muestren explícitamente en el código. 
+
+El archivo .env (entorno) almacena variables de configuración de la aplicación, como:
+
+Credenciales de bases de datos
+
+Claves de API externas
+
+Tokens secretos
+
+Configuración específica del entorno (desarrollo, producción)
+
+Este archivo no debe subirse nunca al repositorio.
+
+Para poder utilizar esa clave sin que quede escrita explícitamente en el código, el archivo main importa una librería llamada "python-dotenv" que permite manejar las variables de entorno. 
+
+La librería contiene la función "load_dotenv()" que accede al archivo ".env" y lee todas las variables allí escritas. Luego, a través del módulo nativo de python "os", que es un manejador del sistema operativo, tenemos acceso a esas variables por medio del método 
+    ".getenv("nombre_de_la_variable_de_entorno")" 
+Esta es la forma en la que estamos accediendo de forma implícita al string que representa la API_KEY con la cual realizamos las llamadas a la API. 
+
+Como las variables de entorno suelen ser datos sensibles, dentro del archivo .gitignore está escrito el nombre del archivo .env para que el control de versiones lo ignore y ese archivo no aparezca en el repositorio de la nube. 

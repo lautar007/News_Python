@@ -3,14 +3,22 @@ SISTEMA DE ANÁLISIS DE NOTICIAS CON APIS MÚLTIPLES
 """
 
 # PEP8: IMPORTACIONES - deben estar organizadas al inicio del archivo, agrupadas por tipo (estándar nativas, de terceros o descargadas, por último locales o archivos modulares) y ordenadas alfabéticamente dentro de cada grupo.
-from newsapi import NewsApiClient
-from datetime import datetime, timedelta
+from newsapi import NewsApiClient #librería de la API newsapi.
+from datetime import datetime, timedelta #librería nativa para control de fechas.
+import os  #objeto del sistema operativo.
+from dotenv import load_dotenv #librería para utilizar las variables de entorno.
 #====================================================================================
+
+# Cargar variables de entorno desde .env
+load_dotenv()
 
 # PEP8: CONSTANTES - las constantes deben escribirse luego de las importaciones del archivo, utilizando mayúsculas y guiones bajos para separar palabras.
 # Los nombres de todas las variables deben ser explicativas de su contenido y/o uso.
 # Se recomienda usar comillas dobles para las cadenas de texto (strings).
-API_KEY = "9a21625178744a9c8ec1cb2de4e45862" #Valor de la clave privada de la API, NO DEBERÍA ESTAR AQUÍ!!!
+
+API_KEY = os.getenv("API_KEY") #Valor de la clave privada de la API.
+#La API_KEY es un dato sensible que no debe aparecer directamente en el proyecto a nivel público, por eso se la recupera desde las variables de entorno. Para más información leer el documento de información "gitignore_y_env.txt" en la carpeta "info_files".
+
 API_TIMEOUT = 30  # Tiempo de espera para las respuestas de las APIs, en segundos.
 MAX_RETRIES = 3  # Número máximo de reintentos para las solicitudes a las APIs.
 DEFAULT_LANGUAGE = "es"  # Idioma predeterminado para el análisis de noticias.
@@ -83,7 +91,7 @@ def fetch_news_by_topic(topic):
 
     return data
 
-print(fetch_news_by_topic("Milei"))
+#print(fetch_news_by_topic("Milei"))
 
 
 def process_article_data(raw_data):

@@ -1,0 +1,75 @@
+Supongamos que somos un programador que está trabajando con varios proyectos a la vez, utilizando Pyhton. 
+Comenzamos con un proyecto que utiliza una determinada librería para ciertas funcionalidades que requiere internamente. Pasan algunos meses y comenzamos a trabajar en otro proyecto que utiliza la misma librería, pero resulta que en ese lapso de tiempo, los desarrolladores de la librería han actualizado su funcionamiento. 
+Por tanto al importar la librería actualizada, resulta que las modificaciones en la misma hacen que se vuelva incompatible con el primer proyecto. Por tanto tenemos un problema que aparece cuando dos proyectos requieren versiones distintas de la misma librería.
+La solución que provee Python es clara: usar entornos virtuales, conocidos formalmente como Virtual Environments and Packages. 
+
+Estos entornos virtuales permiten:
+    - Evitar daños de instalaciones previas al probar versiones nuevas de un paquete (librería)
+    - Usar varias versiones del mismo paquete en un mismo equipo.
+    - Cada entorno es una carpeta independiente con una instalación real de Python.
+    - Crear, borrar y recrear entornos sin afectar otros proyectos. 
+
+Es una buena práctica en cada proyecto crear un archivo 'requirements.txt'** donde se detallen las distintas dependencias, versiones de Python y paquetes de terceros que el proyecto utiliza, junto con la versión específica que cada uno utiliza.
+
+En este proyecto, por ejemplo, estamos usando la librería "NewsApiClient" que nos provee de las funciones necesarias para hacer el llamado a la API de noticias, y así obtener los distintos artículos que vaya recolectando en la web. 
+
+¿Cómo se crea un entorno virtual? 
+Primero necesitamos saber cómo encontrar la versión de Python y su ejecutable en nuestra máquina. 
+Para saber la versión de Python que estamos usando, dentro de la consola podremos ejecutar el siguiente comando: 
+
+    python --version
+
+Este comando retorna, si está intalado correctamente, el número de versión de Pyhton en nuestro ordenador. 
+
+Luego pasa saber donde se encuentra el ejecutable de Python, el comando es:
+
+    python -c "import sys; print(sys.executable)"
+
+Para crear un nuevo módulo (carpeta) donde establecer el entorno virtual, ejecutamos:
+
+    python -m venv [nombre_del_entorno]
+
+Esto automáticamente creará una carpeta de entorno virtual en la dirección a la que apunte la consola en ese momento, con el nombre escogido. 
+Dentro de la carpeta encontraremos:
+ - Una carpeta 'bin' con varios scripts de habilitación, ejecutables de python y ejecutables de pip*
+ - Una carpeta 'lib' donde se guardaran las librerías que vayamos instalando en el entorno, por defecto solo contiene las librerías de pip* 
+ - Variables de configuración, donde solo aparecen datos importantes en formato clave=valor
+
+Una vez creado, para ejecutar el entorno virtual utilizamos el comando: 
+
+    source [nombre_del_entorno]/bin/activate
+
+Y automáticamente se activa el entorno. 
+Para corroborar que se activó correctamente, debemos ejecutar de nuevo el comando para rastrear el ejecutable de Python, y este nos debe retornar la dirección del entorno recién creado. 
+
+El script de activación del entorno virtual contiene varias fucniones entre las cuales existe deactivate, que desactiva el entorno. Por tanto, basta con escribir 'deactivate' en consola para ejecutar dicha funcionalidad.  
+
+Existe una extensión de VSC llamada 'Python Environments' que nos permite manejar mejor el uso de entornos virtuales, en caso de trabajar con varios a la vez. Esta extensión genera un nuevo icono en la barra lateral izquierda del editor, donde podremos verificar qué entorno estamos usando, su versión de Python y qué dependencias utiliza. 
+
+Estas carpetas de entorno no deben ser tenidas en cuenta al momento de publicar el proyecto en un repositorio en la nube, por lo tanto deberíamos detallarlas dentro de un archivo gitignore (ver el archivo informativo sobre gitignore_y_env)
+
+#######################################################################################
+
+*¿Qué es pip? 
+Si han trabajado alguna vez con JavaScript, seguramente conozcan el comando 'npm'. 'pip' es el npm de Python. 
+Básicamente este es un gestor de dependencias que forma parte del ecosistema de Python y que permite a los desarrolladores descargar librerías o paquetes de terceros, para trabajar con funcionalidades ya hechas y no empezar completamente desde cero. 
+
+En el caso de este proyecto hemos utilizado pip para instalar a nivel local una librería que contiene funciones que hacen llamados a NewsAPI. Esta API contiene información actualizada sobre noticias de varios temas, a la cual se accede a través de endpoints, direcciones url que contienen esa información. La propia API recomienda esta librería para realizar llamadas a los endpoints y obtener la información, según tema, fecha, fuente, ordenado por relevancia, entre otras opciones. 
+
+En la sitio web 'pypi.org' se pueden buscar los paquetes o librerías disponibles para trabajar en proyectos de Python. Puede haber paquetes para infinidad de aplicaciones, e incluso se pueden desarrollar librerías y publicarlas para el uso de la comunidad. Allí podremos buscar las dependencias necesarias para optimizar nuestros proyectos y obtener información de su instalación y uso.
+
+#######################################################################################
+
+** El formato del archivo "requirements.txt" debe estructurarse en pares clave==valor, siendo la clave cada una de las dependencias del proyecto, y el valor su correspondiente versión. 
+Para ello es muy fácil conocer estas dependencias utilizando el siguiente comando de pip: 
+
+    pip freeze
+
+Este comando nos retorna una lista de las dependencias del entorno virtual (o el local) en el formato requerido. 
+
+Este archivo es muy util, porque permite que un programador que descargue nuestro proyecto a nivel local en su maquina pueda saber que dependencias utiliza, e incluso instalarlas automáticamente utilizando el siguiente comando de pip: 
+
+    pip install -r requirements.txt
+
+Este comando hace que pip lea el archivo e instale todas las dependencias que el mismo detalla.
+

@@ -1,5 +1,6 @@
-No es el objetivo de este proyecto de ejemplo explicar el funcionamiento de herramientas de control de versionado. 
-En este caso estamos usando Git. 
+No es el objetivo de este proyecto explicar el funcionamiento de herramientas de control de versionado. 
+En este caso estamos usando Git. Recomiendo fuertemente investigar el uso de esta herramienta básica para la programación, en caso de no conocerla.
+
 Lo que hace un controlador de versiones es, justamente, llevar un seguimiento de las modificaciones que se realizan en un proyecto. De esta forma se facilita la protección del código, se puede retroceder a una versión anterior más estable en caso de ocurrir algún error grave, y facilita la colaboración entre programadores para trabajar en un mismo proyecto. 
 Además, tiene la opción de conectar el proyecto con un repositorio en la nube, de tal forma que todos los cambios que se vayan haciendo a nivel código puedan subirse automáticamente y el proyecto esté actualizado y resguardado en internet. 
 

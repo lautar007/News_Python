@@ -1,0 +1,77 @@
+🚀 uv: El gestionador de proyectos Python ultrarrápido
+
+¿Qué es uv?
+uv es una herramienta creada por la empresa Astral (los mismos que hicieron Ruff) para gestionar proyectos y paquetes de Python. Está escrito en Rust .
+
+Su objetivo es simplificar tu vida como desarrollador reemplazando múltiples herramientas tradicionales con una sola. ¿Para qué sirve exactamente? Para todo lo relacionado con la gestión de tu proyecto: crear el proyecto, instalar Python, gestionar dependencias, crear entornos virtuales y ejecutar tu código .
+
+⚡️ ¿Por qué es tan especial?
+Unifica las funciones de herramientas clásicas como pip (instalador), virtualenv (entornos), pyenv (versiones de Python) y poetry (gestión de proyectos) en un solo comando: uv .
+
+Es extremadamente rápido: uv es entre 10 y 100 veces más rápido que pip. Esto hace que instalar librerías y crear entornos sea casi instantáneo.
+
+Fácil de usar: Sus comandos son muy intuitivos, especialmente si ya has usado pip antes. 
+
+🛠️ Principales funciones
+Esto es lo que puedes hacer con uv:
+
+- Gestionar proyectos:
+
+Crear un proyecto nuevo con 
+    
+    uv init nombre_proyecto.
+
+Añadir o quitar dependencias (librerías) con 
+
+    uv add nombre_paquete 
+    
+    uv remove nombre_paquete.
+
+
+Ejecutar comandos dentro del entorno del proyecto con
+
+    uv run python mi_script.py .
+
+- Gestionar la versión de Python:
+
+Instalar y cambiar entre diferentes versiones de Python sin esfuerzo con
+    
+    uv python install 3.12 .
+
+Crear entornos virtuales:
+
+Crea un entorno virtual (el famoso .venv) de forma automática y limpia con
+
+    uv venv .
+
+- Ejecutar scripts (archivos de código):
+
+Puedes ejecutar un script .py directamente y uv se encargará de crear un entorno temporal con las dependencias que el script necesite. Ideal para probar cosas rápidas.
+
+
+📥 Instalación
+Instalar uv es muy sencillo. Solo tienes que abrir tu terminal y ejecutar, en caso de ya tener pip: 
+
+    pip install uv
+
+Una vez instalado podremos ejecutar el siguiente comando para conocer la herramienta:
+
+    uv --help
+
+Este comando muestra en consola una lista de todos los comandos de la herramienta.
+
+Una de las utilidades más convenientes de uv es la posibilidad de crear de manera automática el "boiler plate" (plantilla de proyecto), es decir, el conjunto de códigos, archivos y configuración predefinida que sirven como punto de partida común sobre el cual comenzar un nuevo proyecto, en este caso de Python. 
+Para hacerlo se debe ejecutar el siguiente comando: 
+
+    uv init
+
+Este comando genera automáticamente tres archivos. 
+    - Python version: muestra la versión de Python que utiliza el proyecto.
+    - Un archivo README vacío para caratular el proyecto y documentarlo.
+    - Un archivo "pyproject.toml", un archivo de configuración estándar en Python que centraliza toda la información y configuraciones de un proyecto en un solo lugar. Fue propuesto en la PEP 518 para unificar cómo se configuran los proyectos Python.
+
+Además, cada vez que instalemos una dependencia utilizando el comando "uv add", se guarda en un archivo uv.lock (que de no existir, lo crea) toda la información completa sobre cada dependencia y su versión exacta. Y de no existir, también genera un entorno virtual al que aplica todas las dependencias instaladas de esta forma. 
+
+Además, en el caso de descargar a nivel local un proyecto desde internet, la herramienta nos da un comando para descargar automáticamente todas las dependencias que el proyecto necesita y generar el entorno virtual:
+
+    uv sync

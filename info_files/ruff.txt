@@ -1,6 +1,8 @@
 -->¿Qué es Ruff? 
-Ruff es principalmente un linter y formateador de código Python extremadamente rápido, escrito en el lenguaje Rust. 
-Está diseñado para mejorar la eficiencia en el desarrollo al detectar errores de estilo, corregir problemas comunes y formatear código mucho más rápido que otras herramientas tradicionales.
+Ruff es principalmente un linter y formateador de código Python extremadamente rápido. 
+Esta herramienta, al igual que UV, fue creada por la empresa Astral. Ellos desarrollan herramientas en lenguaje Rust para acelerar los procesos vinculados con el ecosistema Python.
+
+Ruff está diseñado para mejorar la eficiencia en el desarrollo al detectar errores de estilo, corregir problemas comunes y formatear código mucho más rápido que otras herramientas tradicionales.
 
 Características y usos clave de Ruff:
 
